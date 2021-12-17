@@ -1,0 +1,30 @@
+{
+  "name": "keep-up-programming",
+  "version": "1.0.0",
+  "description": "Keep up with recent trends in programming by reading fellow developers' blog posts and create your own posts as well. (bootcamp challenge)",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steadysamwise4/keep-up-programming.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "CC",
+  "bugs": {
+    "url": "https://github.com/steadysamwise4/keep-up-programming/issues"
+  },
+  "homepage": "https://github.com/steadysamwise4/keep-up-programming#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.12.0-beta.3"
+  }
+}
