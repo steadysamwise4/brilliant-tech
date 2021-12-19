@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Link, User } = require('../../models');
+const { Blog, User } = require('../../models');
 
-// get all links
+// get all blog posts
 router.get('/', (req, res) => {
-    Link.findAll({
-        attributes: ['id', 'title', 'description', 'author', 'link_url', 'created_at'],
+    Blog.findAll({
+        attributes: ['id', 'title', 'content', 'created_at'],
         include: [
             {
               model: User,
@@ -12,20 +12,20 @@ router.get('/', (req, res) => {
             }
           ]
     })
-    .then(dbLinkData => res.json(dbLinkData))
+    .then(dbBlogData => res.json(dbBlogData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
   });
 
-  // Get one link by it's id
+  // Get one blog post by it's id
   router.get('/:id', (req, res) => {
-    Link.findOne({
+    Blog.findOne({
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'title', 'description', 'author', 'link_url', 'created_at'],
+      attributes: ['id', 'title', 'content', 'created_at'],
       include: [
         {
           model: User,
@@ -33,12 +33,12 @@ router.get('/', (req, res) => {
         }
       ]
     })
-      .then(dbLinkData => {
-        if (!dbLinkData) {
+      .then(dbBlogData => {
+        if (!dbBlogData) {
           res.status(404).json({ message: 'No link found with this id' });
           return;
         }
-        res.json(dbLinkData);
+        res.json(dbBlogData);
       })
       .catch(err => {
         console.log(err);
@@ -46,34 +46,29 @@ router.get('/', (req, res) => {
       });
   });
 
-  // create a posted link
+  // create a new blog post
   router.post('/', (req, res) => {
-    // expects {title: 'The fundamentals of security incident response', 
-    //description: 'Read about the ongoing battle between business and cybercriminals',
-    // author: 'Chris Pratt', 
-    // post_url: 'https://www.hpe.com', user_id: 1}
-    Link.create({
+    // expects {title: 'New coding challenges can seem overwhelming at first', 
+    //content: 'When I just find a way to begin, at some point things start to click and it becomes fun.',
+    // user_id: 1}
+    Blog.create({
       title: req.body.title,
-      description: req.body.description,
-      author: req.body.author,
-      link_url: req.body.link_url,
+      content: req.body.content,
       user_id: req.body.user_id
     })
-      .then(dbLinkData => res.json(dbLinkData))
+      .then(dbBlogData => res.json(dbBlogData))
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
   });
 
-  // update a posted link
+  // update a blog post
   router.put('/:id', (req, res) => {
-    Link.update(
+    Blog.update(
         {
             title: req.body.title,
-            description: req.body.description,
-            author: req.body.author,
-            link_url: req.body.link_url 
+            content: req.body.content
         },
         {
             where: {
@@ -81,12 +76,12 @@ router.get('/', (req, res) => {
             }
         }
     )
-    .then (dbLinkData => {
-        if (!dbLinkData) {
-            res.status(404).json({ message: 'No link found with this id' });
+    .then (dbBlogData => {
+        if (!dbBlogData) {
+            res.status(404).json({ message: 'No blog found with this id' });
             return;
         }
-        res.json(dbLinkData);
+        res.json(dbBlogData);
     })
     .catch(err => {
         console.log(err);
@@ -94,19 +89,19 @@ router.get('/', (req, res) => {
     });
 });
 
-// delete a link
+// delete a blog post
 router.delete('/:id', (req, res) => {
-  Link.destroy({
+  Blog.destroy({
     where: {
       id: req.params.id
     }
   })
-    .then(dbLinkData => {
-      if (!dbLinkData) {
-        res.status(404).json({ message: 'No link found with this id' });
+    .then(dbBlogData => {
+      if (!dbBlogData) {
+        res.status(404).json({ message: 'No blog found with this id' });
         return;
       }
-      res.json(dbLinkData);
+      res.json(dbBlogData);
     })
     .catch(err => {
       console.log(err);
