@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Link, User } = require('../../models');
 
-// get all posts
+// get all links
 router.get('/', (req, res) => {
     Link.findAll({
         attributes: ['id', 'title', 'description', 'link_url', 'created_at'],
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     });
   });
 
-  // Get one post by it's id
+  // Get one link by it's id
   router.get('/:id', (req, res) => {
     Link.findOne({
       where: {
@@ -46,6 +46,7 @@ router.get('/', (req, res) => {
       });
   });
 
+  // create a posted link
   router.post('/', (req, res) => {
     // expects {title: 'The fundamentals of security incident response', 
     //description: 'Read about the ongoing battle between business and cybercriminals',
@@ -64,5 +65,53 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
       });
   });
+
+  // update a posted link
+  router.put('/:id', (req, res) => {
+    Link.update(
+        {
+            title: req.body.title,
+            description: req.body.description,
+            author: req.body.author,
+            link_url: req.body.link_url 
+        },
+        {
+            where: {
+                id: req.params.id 
+            }
+        }
+    )
+    .then (dbLinkData => {
+        if (!dbLinkData) {
+            res.status(404).json({ message: 'No link found with this id' });
+            return;
+        }
+        res.json(dbLinkData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+// delete a link
+router.delete('/:id', (req, res) => {
+  Link.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbLinkData => {
+      if (!dbLinkData) {
+        res.status(404).json({ message: 'No link found with this id' });
+        return;
+      }
+      res.json(dbLinkData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
   module.exports = router;
