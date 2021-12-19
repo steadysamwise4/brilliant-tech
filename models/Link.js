@@ -1,9 +1,9 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class Link extends Model {}
 
-Post.init(
+Link.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -15,19 +15,20 @@ Post.init(
         type: DataTypes.STRING,
         allowNull: false
       },
-      content: {
-        type: DataTypes.TEXT,
+      description: {
+        type: DataTypes.STRING,
         allowNull: false
       },
-      post_url: {
+      author: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          isURL: true
-        }
+      },
+      link_url: {
+        type: DataTypes.STRING,
+        allowNull: false
       },
       user_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
         references: {
           model: 'user',
           key: 'id'
@@ -38,8 +39,8 @@ Post.init(
       sequelize,
       freezeTableName: true,
       underscored: true,
-      modelName: 'post'
+      modelName: 'link'
     }
   );
 
-  module.exports = Post;
+  module.exports = Link;
