@@ -5,7 +5,13 @@ const { Blog, User, Voteblog } = require('../../models');
 // get all blog posts
 router.get('/', (req, res) => {
     Blog.findAll({
-        attributes: ['id', 'title', 'content', 'created_at'],
+        attributes: ['id', 
+                     'title', 
+                     'content', 
+                     'created_at',
+                     [ sequelize.literal('(SELECT COUNT(*) FROM voteblog WHERE blog.id = voteblog.blog_id)'),
+                        'vote_count']
+        ],
         include: [
             {
               model: User,
@@ -26,7 +32,13 @@ router.get('/', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'title', 'content', 'created_at'],
+      attributes: ['id', 
+                   'title', 
+                   'content', 
+                   'created_at',
+                   [ sequelize.literal('(SELECT COUNT(*) FROM voteblog WHERE blog.id = voteblog.blog_id)'),
+                   'vote_count']
+        ],
       include: [
         {
           model: User,

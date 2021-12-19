@@ -5,7 +5,15 @@ const { Link, User, Votelink } = require('../../models');
 // get all links
 router.get('/', (req, res) => {
     Link.findAll({
-        attributes: ['id', 'title', 'description', 'author', 'link_url', 'created_at'],
+        attributes: ['id', 
+                     'title', 
+                     'description', 
+                     'author', 
+                     'link_url', 
+                     'created_at',
+                     [ sequelize.literal('(SELECT COUNT(*) FROM votelink WHERE link.id = votelink.link_id)'),
+                      'vote_count']
+        ],
         include: [
             {
               model: User,
@@ -26,7 +34,15 @@ router.get('/', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'title', 'description', 'author', 'link_url', 'created_at'],
+      attributes: ['id', 
+                   'title', 
+                   'description', 
+                   'author', 
+                   'link_url', 
+                   'created_at',
+                   [ sequelize.literal('(SELECT COUNT(*) FROM votelink WHERE link.id = votelink.link_id)'),
+                      'vote_count']
+      ],
       include: [
         {
           model: User,
@@ -74,7 +90,7 @@ router.put('/upvote', (req, res) => {
     link_id: req.body.link_id,
   })
   .then(() => {
-    // then find the post we just voted on
+    // then find the link we just voted on
     return Link.findOne({
       where: {
         id: req.body.link_id
