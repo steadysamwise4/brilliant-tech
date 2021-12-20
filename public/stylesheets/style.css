@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+  }
+
+html, body {
+    background: url('/images/light-explosion.jpg') center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+body {
+    line-height: 1.5;
+    font-family: sans-serif;
+    width:100%;
+    margin:0 auto;
+    /* > footer {
+     
+  } */
+}
+
+.wrapper {
+    flex: 1 0 auto;
+}
+.page-title {
+   
+    text-align: center;
+    color:cornsilk;
+    font-size: 3.0rem;
+}
+
+.home {
+    
+    text-align: center;
+    color: cornsilk;
+}
+
+.footer {
+    flex-shrink: 0;
+    text-align: center;
+    color: cornsilk;
+    background-color:black;
+    position: sticky;
+    top: 100vh;
+}
