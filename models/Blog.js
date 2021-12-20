@@ -1,17 +1,18 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
+const User = require('./User');
 const sequelize = require('../config/connection');
 
 class Blog extends Model {
   static upvote(body, models) {
     return models.Voteblog.create({
-      user_id: req.body.user_id,
-      blog_id: req.body.blog_id
+      user_id: body.user_id,
+      blog_id: body.blog_id
     })
     .then(() => {
         // then find the blog we just voted on
         return Blog.findOne({
           where: {
-            id: req.body.blog_id
+            id: body.blog_id
           },
           attributes: [
             'id',

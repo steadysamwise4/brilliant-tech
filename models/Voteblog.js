@@ -11,7 +11,7 @@ Voteblog.init(
       autoIncrement: true
     },
     user_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
           model: 'user',
@@ -20,7 +20,7 @@ Voteblog.init(
       },
     blog_id: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         references: {
           model: 'blog',
           key: 'id'

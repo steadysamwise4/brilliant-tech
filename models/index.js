@@ -3,6 +3,8 @@ const Link = require("./Link");
 const Blog = require("./Blog");
 const Voteblog = require('./Voteblog');
 const Votelink = require('./Votelink');
+const Commentblog = require('./Commentblog');
+const Commentlink = require('./Commentlink');
 
 User.hasMany(Link, {
     foreignKey: 'user_id'
@@ -68,6 +70,36 @@ Votelink.belongsTo(User, {
     foreignKey: 'blog_id'
   });
 
+  Commentlink.belongsTo(User, {
+    foreignKey: 'user_id'
+  });
+  
+  Commentlink.belongsTo(Link, {
+    foreignKey: 'link_id'
+  });
+  
+  User.hasMany(Commentlink, {
+    foreignKey: 'user_id'
+  });
+  
+  Link.hasMany(Commentlink, {
+    foreignKey: 'link_id'
+  });
 
+  Commentblog.belongsTo(User, {
+    foreignKey: 'user_id'
+  });
+  
+  Commentblog.belongsTo(Blog, {
+    foreignKey: 'blog_id'
+  });
+  
+  User.hasMany(Commentblog, {
+    foreignKey: 'user_id'
+  });
+  
+  Blog.hasMany(Commentblog, {
+    foreignKey: 'blog_id'
+  });
 
-module.exports = { User, Link, Blog, Votelink, Voteblog };
+module.exports = { User, Link, Blog, Votelink, Voteblog, Commentlink, Commentblog };

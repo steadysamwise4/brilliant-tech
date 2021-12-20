@@ -4,14 +4,14 @@ const sequelize = require('../config/connection');
 class Link extends Model {
   static upvote(body, models) {
     return models.Votelink.create({
-      user_id: req.body.user_id,
-      link_id: req.body.link_id,
+      user_id: body.user_id,
+      link_id: body.link_id,
     })
     .then(() => {
       // then find the link we just voted on
       return Link.findOne({
         where: {
-          id: req.body.link_id
+          id: body.link_id
         },
         attributes: [
           'id',
