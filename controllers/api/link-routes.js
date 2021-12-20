@@ -1,6 +1,6 @@
 const sequelize = require('../../config/connection');
 const router = require('express').Router();
-const { Link, User, Votelink } = require('../../models');
+const { Link, User, Votelink, Commentlink } = require('../../models');
 
 // get all links
 router.get('/', (req, res) => {
@@ -12,9 +12,19 @@ router.get('/', (req, res) => {
                      'link_url', 
                      'created_at',
                      [ sequelize.literal('(SELECT COUNT(*) FROM votelink WHERE link.id = votelink.link_id)'),
-                      'vote_count']
+                      'vote_count'],
+                      [ sequelize.literal('(SELECT COUNT(*) FROM commentlink WHERE link.id = commentlink.link_id)'),
+                      'comment_count']
         ],
         include: [
+            {
+              model: Commentlink,
+              attributes: ['id', 'comment_text', 'link_id', 'user_id', 'created_at'],
+              include: {
+                model: User,
+                attributes: ['username']
+              }
+            },
             {
               model: User,
               attributes: ['username']
@@ -41,9 +51,19 @@ router.get('/', (req, res) => {
                    'link_url', 
                    'created_at',
                    [ sequelize.literal('(SELECT COUNT(*) FROM votelink WHERE link.id = votelink.link_id)'),
-                      'vote_count']
+                      'vote_count'],
+                   [ sequelize.literal('(SELECT COUNT(*) FROM commentlink WHERE link.id = commentlink.link_id)'),
+                      'comment_count']
       ],
       include: [
+        {
+          model: Commentlink,
+          attributes: ['id', 'comment_text', 'link_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
         {
           model: User,
           attributes: ['username']

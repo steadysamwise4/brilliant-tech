@@ -1,6 +1,6 @@
 const sequelize = require('../../config/connection');
 const router = require('express').Router();
-const { Blog, User, Voteblog } = require('../../models');
+const { Blog, User, Voteblog, Commentblog } = require('../../models');
 
 // get all blog posts
 router.get('/', (req, res) => {
@@ -10,9 +10,19 @@ router.get('/', (req, res) => {
                      'content', 
                      'created_at',
                      [ sequelize.literal('(SELECT COUNT(*) FROM voteblog WHERE blog.id = voteblog.blog_id)'),
-                        'vote_count']
+                        'vote_count'],
+                      [ sequelize.literal('(SELECT COUNT(*) FROM commentblog WHERE blog.id = commentblog.blog_id)'),
+                        'comment_count']
         ],
         include: [
+            {
+              model: Commentblog,
+              attributes: ['id', 'comment_text', 'blog_id', 'user_id', 'created_at'],
+              include: {
+                model: User,
+                attributes: ['username']
+              }
+            },
             {
               model: User,
               attributes: ['username']
@@ -37,9 +47,19 @@ router.get('/', (req, res) => {
                    'content', 
                    'created_at',
                    [ sequelize.literal('(SELECT COUNT(*) FROM voteblog WHERE blog.id = voteblog.blog_id)'),
-                   'vote_count']
+                   'vote_count'],
+                   [ sequelize.literal('(SELECT COUNT(*) FROM commentblog WHERE blog.id = commentblog.blog_id)'),
+                        'comment_count']
         ],
       include: [
+        {
+          model: Commentblog,
+          attributes: ['id', 'comment_text', 'blog_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
         {
           model: User,
           attributes: ['username']
