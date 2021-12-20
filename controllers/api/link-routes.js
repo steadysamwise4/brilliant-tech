@@ -85,35 +85,12 @@ router.get('/', (req, res) => {
 
   // PUT /api/links/upvote - upvote this link
 router.put('/upvote', (req, res) => {
-  Votelink.create({
-    user_id: req.body.user_id,
-    link_id: req.body.link_id,
-  })
-  .then(() => {
-    // then find the link we just voted on
-    return Link.findOne({
-      where: {
-        id: req.body.link_id
-      },
-      attributes: [
-        'id',
-        'link_url',
-        'title',
-        'description',
-        'author',
-        'created_at',
-        // use raw MySQL aggregate function query to get a count of how many votes the post has and return it under the name `vote_count`
-        [
-          sequelize.literal('(SELECT COUNT(*) FROM votelink WHERE link.id = votelink.link_id)'),
-          'vote_count'
-        ]
-      ]
-    })
-    .then(dbLinkData => res.json(dbLinkData))
+    // custom static method created in models/Link.js
+    Link.upvote(req.body, { Votelink })
+    .then(updatedLinkData => res.json(updatedLinkData))
     .catch(err => {
       console.log(err);
-      res.status(400).json(err);
-    });
+      res.status(400).json(err); 
   });
 });
 

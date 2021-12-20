@@ -78,40 +78,13 @@ router.get('/', (req, res) => {
 
     // PUT /api/blogs/upvote - upvote this blog
 router.put('/upvote', (req, res) => {
-    Voteblog.create({
-      user_id: req.body.user_id,
-      blog_id: req.body.blog_id
-    })
-    .then(() => {
-        // then find the blog we just voted on
-        return Blog.findOne({
-          where: {
-            id: req.body.blog_id
-          },
-          attributes: [
-            'id',
-            'title',
-            'content',
-            'created_at',
-            // use raw MySQL aggregate function query to get a count of how many votes the post has and return it under the name `vote_count`
-            [
-              sequelize.literal('(SELECT COUNT(*) FROM voteblog WHERE blog.id = voteblog.blog_id)'),
-              'vote_count'
-            ]
-          ],
-          include: [
-            {
-              model: User,
-              attributes: ['username']
-            }
-          ]
-        })
-        .then(dbBlogData => res.json(dbBlogData))
+    // custom static method created in models/Blog.js
+    Blog.upvote(req.body, { Voteblog, User })
+        .then(updatedBlogData => res.json(updatedBlogData))
         .catch(err => {
           console.log(err);
           res.status(400).json(err);
         });
-      });
   });
 
   // update a blog post
