@@ -1,1 +1,24 @@
-<div class="home">You are on the homepage</div>
+<div class="home">
+    <h1 class="link-heading">Linked Articles</h1>
+    <ol class="post-list">
+  <li>
+    <article class="post">
+      <div class="link-title">
+        <a href="{{link_url}}" target="_blank">{{title}}</a>
+        </br>
+        <span class="author">written by: {{author}}</span>
+        </br>
+        <span class="description">({{description}})</span>
+      </div>
+      <div class="meta">
+        {{vote_count}} point(s) - posted by {{user.username}} on
+        {{created_at}}
+        |
+        </br>
+        <a href="/links/{{id}}">{{commentlink.length}} comment(s)</a>
+      </div>
+    </article>
+  </li>
+</ol>
+
+</div>
