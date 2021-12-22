@@ -45,8 +45,8 @@ body {
 }
 
 .post {
-    background-color: rgb(192,192,192,0.3);
-    color:springgreen;
+    background-color: rgb(192,192,192,0.5);
+    color:whitesmoke;
     border-radius: 15px; 
     margin: 20px; 
 }
@@ -153,7 +153,7 @@ a:hover {
     color:salmon;
 }
 .form {
-    background-color: rgb(192,192,192,0.3);
+    background-color: rgb(192,192,192,0.5);
     margin: auto;
     width: 350px;
     font-size: 1.3rem;
@@ -196,7 +196,24 @@ textarea {
 .submit:hover {
     color: salmon;
 }
-.center {
-    
+.text {
+    color:black;
+    font-weight: bolder;
 }
+
+.comment {
+    padding: 1%;
+    margin-bottom: 1%;
+    background-color: rgb(192,192,192,0.4);
+  }
+  
+  .comment:nth-child(odd) {
+    background-color: rgb(192,192,192,0.6);
+  }
+  
+  .comment .meta {
+    font-size: 90%;
+    margin-bottom: .5%;
+    color:whitesmoke;
+  }
   

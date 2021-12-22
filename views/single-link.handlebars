@@ -1,0 +1,49 @@
+<div class="home">
+  <h1 class="link-heading">View Link Comments</h1>
+  <ol class="post-list">
+   <li>
+    <article class="post">
+      <div class="link-title">
+        <a href="{{link.link_url}}" target="_blank">{{link.title}}</a>
+        </br>
+        <span class="author">written by: {{link.author}}</span>
+        </br>
+        <span class="description">{{link.description}}</span>
+      </div>
+      <div class="meta">
+        {{link.vote_count}} point(s) by {{link.user.username}} on
+        {{link.created_at}}
+        |
+        <span>{{link.commentlinks.length}} comment(s)</span>
+      </div>
+    </article>
+   </li>
+ </ol>
+ <div class="field">
+      <a href="/" class="center">Return Home</a>
+  </div>
+  <form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add comment</button>
+    <button type="button" class="upvote-btn">upvote</button>
+  </div>
+</form>
+
+<div class="comments">
+  {{#each link.commentlinks}}
+  <section class="comment">
+    <div class="text">
+      {{comment_text}}
+    </div>
+    <div class="meta">
+      Posted by: {{user.username}} on {{created_at}}
+    </div>
+  </section>
+  {{/each}}
+</div>
+
+</div>

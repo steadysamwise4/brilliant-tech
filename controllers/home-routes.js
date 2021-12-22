@@ -57,6 +57,53 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
 
+  router.get('/link/:id', (req, res) => {
+    Link.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: ['id', 
+                     'title', 
+                     'description', 
+                     'author', 
+                     'link_url', 
+                     'created_at',
+                     [ sequelize.literal('(SELECT COUNT(*) FROM votelink WHERE link.id = votelink.link_id)'),
+                      'vote_count'],
+                      [ sequelize.literal('(SELECT COUNT(*) FROM commentlink WHERE link.id = commentlink.link_id)'),
+                      'comment_count']
+        ],
+        include: [
+            {
+              model: Commentlink,
+              attributes: ['id', 'comment_text', 'link_id', 'user_id', 'created_at'],
+              include: {
+                model: User,
+                attributes: ['username']
+              }
+            },
+            {
+              model: User,
+              attributes: ['username']
+            }
+          ]
+    })
+    .then(dbLinkData => {
+        if (!dbLinkData) {
+          res.status(404).json({ message: 'No link found with this id' });
+          return;
+        }
+  
+        // serialize the data
+        const link = dbLinkData.get({ plain: true });
+  
+    res.render('single-link', { link });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 
 module.exports = router;
