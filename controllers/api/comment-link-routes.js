@@ -24,9 +24,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+    if (req.session) {
     Commentlink.create({
         comment_text: req.body.comment_text,
-        user_id: req.body.user_id,
+        user_id: req.session.user_id,
         link_id: req.body.link_id
       })
         .then(dbCommentLinkData => res.json(dbCommentLinkData))
@@ -34,7 +35,7 @@ router.post('/', (req, res) => {
           console.log(err);
           res.status(400).json(err);
         });
-
+    }
 });
 
 router.delete('/:id', (req, res) => {

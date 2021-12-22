@@ -105,13 +105,15 @@ router.get('/', (req, res) => {
 
   // PUT /api/links/upvote - upvote this link
 router.put('/upvote', (req, res) => {
+  if (req.session) {
     // custom static method created in models/Link.js
-    Link.upvote(req.body, { Votelink })
-    .then(updatedLinkData => res.json(updatedLinkData))
+    Link.upvote({...req.body, user_id: req.session.user_id}, { Votelink, Commentlink, User })
+    .then(updatedVoteData => res.json(updatedVoteData))
     .catch(err => {
       console.log(err);
-      res.status(400).json(err); 
+      res.status(500).json(err); 
   });
+ }
 });
 
   // update a posted link

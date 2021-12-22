@@ -203,8 +203,10 @@ textarea {
 
 .comment {
     padding: 1%;
+    margin: 20px;
     margin-bottom: 1%;
     background-color: rgb(192,192,192,0.4);
+    border-radius: 15px;
   }
   
   .comment:nth-child(odd) {
@@ -216,4 +218,31 @@ textarea {
     margin-bottom: .5%;
     color:whitesmoke;
   }
+  .comment-heading {
+    font-size: 1.2rem;
+    text-align: center;
+    color: whitesmoke;
+}
+.comment-body {
+    border-radius: 12px;
+    min-width: 40%;
+    min-height: 100px;
+    padding: .5%;
+    border: 1px solid #ccc;
+}
+.comment-body:focus {
+    outline: none;
+    border: 1px solid black;
+  }
+  .upvote-btn {
+    background-color: #560485;
+    transition: background-color .1s;
+    color:whitesmoke;
+  }
   
+  .upvote-btn:hover {
+    background-color:#905baf ;
+  }
+  .btn-div {
+      padding:15px;
+  }
