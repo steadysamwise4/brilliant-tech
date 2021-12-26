@@ -1,5 +1,10 @@
 <div class="home">
-    <h1 class="link-heading">Linked Articles</h1>
+    <div class="nav-mini">
+         {{#if loggedIn}}
+      <a href="/dashboard">Your Dashboard</a>
+      {{/if}}
+  </div>
+    <h3 class="link-heading">Linked Articles</h3>
     <ol class="post-list">
     {{#each links as |link|}}
   <li>

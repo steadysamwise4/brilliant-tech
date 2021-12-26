@@ -58,6 +58,15 @@ nav {
     padding-bottom: 2px;
     padding-right: 15px;
 }
+.nav-mini {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: rgb(245,245,245,0.8);
+    margin: 25px 0;
+    padding: 5px;
+    
+}
 
 .post-list {
     list-style: none;
@@ -85,7 +94,19 @@ a {
     color: #560485;
     font-weight: bold;
     transition: color .1s;
-    flex: auto;
+    flex: inherit;
+}
+.edit-link {
+    padding:5px 30px;
+    background-color: rgb(245,245,245,0.8);
+    border-radius: 5px;
+    border: black solid 1px;
+}
+.sub-heading {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: whitesmoke;
+    background-color: rgb(86,4,133,0.8);
 }
   
 a:hover {
@@ -161,6 +182,14 @@ a:hover {
     font-size: 1.3rem;
     border-radius: 10px;
 }
+.add-form {
+    background-color: rgb(192,192,192,0.8);
+    margin: auto;
+    max-width: 650px;
+    font-size: 1.0rem;
+    border-radius: 10px;
+}
+
 input {
     padding: .5%;
     border-radius: 5px;
@@ -179,6 +208,11 @@ textarea {
 .field {
       text-align: center;
       padding: 15px;
+}
+.add-field {
+    text-align: center;
+    padding: 3px;
+    font-weight: bold;
 }
 .submit {
     background: blue;

@@ -94,7 +94,7 @@ router.get('/', (req, res) => {
       description: req.body.description,
       author: req.body.author,
       link_url: req.body.link_url,
-      user_id: req.body.user_id
+      user_id: req.session.user_id
     })
       .then(dbLinkData => res.json(dbLinkData))
       .catch(err => {
