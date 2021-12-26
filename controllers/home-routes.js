@@ -33,7 +33,10 @@ router.get('/', (req, res) => {
     .then(dbLinkData => {
         // pass a single post object into the homepage template
         const links = dbLinkData.map(link => link.get({ plain: true }));
-        res.render('homepage', { links });
+        res.render('homepage', { 
+            links,
+            loggedIn: req.session.loggedIn 
+        });
       })
       .catch(err => {
         console.log(err);
@@ -97,7 +100,9 @@ router.get('/login', (req, res) => {
         // serialize the data
         const link = dbLinkData.get({ plain: true });
   
-    res.render('single-link', { link });
+    res.render('single-link', { 
+        link,
+        loggedIn: req.session.loggedIn });
     })
     .catch(err => {
         console.log(err);

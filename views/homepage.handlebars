@@ -3,22 +3,7 @@
     <ol class="post-list">
     {{#each links as |link|}}
   <li>
-    <article class="post">
-      <div class="link-title">
-        <a href="{{link.link_url}}" target="_blank">{{link.title}}</a>
-        </br>
-        <span class="author">written by: {{link.author}}</span>
-        </br>
-        <span class="description">{{link.description}}</span>
-      </div>
-      <div class="meta">
-        {{link.vote_count}} point(s) - posted by {{link.user.username}} on
-        {{link.created_at}}
-        |
-        </br>
-        <a href="/link/{{id}}">{{link.commentlinks.length}} comment(s)</a>
-      </div>
-    </article>
+    {{> link-info link }}
   </li>
   {{/each}}
 </ol>

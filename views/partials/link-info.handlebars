@@ -1,0 +1,16 @@
+ <article class="post">
+      <div class="link-title">
+        <a href="{{link_url}}" target="_blank">{{title}}</a>
+        </br>
+        <span class="author">written by: {{author}}</span>
+        </br>
+        <span class="description">{{description}}</span>
+      </div>
+      <div class="meta">
+        {{vote_count}} {{format_plural "point" vote_count}} - posted by {{user.username}} on
+        {{format_date created_at}}
+        
+        </br>
+        <a href="/link/{{id}}">{{commentlinks.length}} {{format_plural "comment" commentlinks.length}}</a>
+      </div>
+    </article>
