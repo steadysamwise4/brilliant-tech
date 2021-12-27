@@ -25,9 +25,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
+    if(req.session) {
     Commentblog.create({
         comment_text: req.body.comment_text,
-        user_id: req.body.user_id,
+        user_id: req.session.user_id,
         blog_id: req.body.blog_id
       })
         .then(dbCommentblogData => res.json(dbCommentblogData))
@@ -35,7 +36,7 @@ router.post('/', withAuth, (req, res) => {
           console.log(err);
           res.status(400).json(err);
         });
-
+    }
 });
 
 router.delete('/:id', withAuth,(req, res) => {

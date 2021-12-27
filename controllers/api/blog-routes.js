@@ -87,7 +87,7 @@ router.get('/', (req, res) => {
     Blog.create({
       title: req.body.title,
       content: req.body.content,
-      user_id: req.body.user_id
+      user_id: req.session.user_id
     })
       .then(dbBlogData => res.json(dbBlogData))
       .catch(err => {
@@ -98,13 +98,15 @@ router.get('/', (req, res) => {
 
     // PUT /api/blogs/upvote - upvote this blog
 router.put('/upvote', (req, res) => {
+  if (req.session) {
     // custom static method created in models/Blog.js
-    Blog.upvote(req.body, { Voteblog, User })
-        .then(updatedBlogData => res.json(updatedBlogData))
+    Blog.upvote({...req.body, user_id: req.session.user_id}, { Voteblog, Commentblog, User })
+        .then(updatedVoteData => res.json(updatedVoteData))
         .catch(err => {
           console.log(err);
           res.status(400).json(err);
         });
+      }
   });
 
   // update a blog post

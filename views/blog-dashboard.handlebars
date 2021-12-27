@@ -1,0 +1,36 @@
+<div class="nav-mini">
+      <a href="/" class="center">Your Blog Posts</a>
+      <a href="/allblogs" class="center">Blog Posts</a>
+      <a href="/dashboard" class="center">Link Dashboard</a>
+  </div>
+  <h3 class="sub-heading">Create a New Blog Post</h3>
+
+  <form id="add-blog-form" class="add-form">
+       <div class="add-field">
+    <label for="title-input-blog">Title:</label><br>
+    <input type="text" style="width: 75%" id="title-input-blog" />
+  </div>
+  <div class="add-field" > 
+    <label for="content-blog">Content</label><br>
+    <textarea name="comment-blog-body" style="width: 75%" id="content-blog"/></textarea>
+  </div>
+   <div class="field">
+    <button class="submit" type="submit">Submit</button>
+  </div>
+
+  </form>
+
+   {{#if blogs.length}} 
+  <div class="home">
+ <h3 class="sub-heading">Your Blogs</h3>
+    <ol class="post-list">
+    {{#each blogs as |blog|}}
+  <li>
+    {{> blog-info blog }}
+    <a href="/blog-dashboard/edit/{{link.id}}" class="edit-link">Edit blog</a>
+  </li>
+  {{/each}}
+</ol>
+  {{/if}}
+</div>
+<script src="/javascript/add-blog.js"></script>

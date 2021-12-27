@@ -1,0 +1,45 @@
+<div class="home">
+  <div class="nav-mini">
+      <a href="/" class="center">Linked Articles</a>
+      <a href="/allblogs" class="center">Blog Posts</a>
+       {{#if loggedIn}}
+      <a href="/dashboard">Your Dashboard</a>
+      {{/if}}
+  </div>
+
+  <h3 class="link-heading">Blog Details</h3> 
+    <article class="blog">
+      <div class="link-title">
+        <span class="blog-heading">{{blog.title}}</span><br>
+      </div>
+      <div class="meta">
+        {{blog.vote_count}} {{format_plural "point" blog.vote_count}} - posted by {{blog.user.username}} on
+        {{format_date blog.created_at}}
+        
+        </br>
+        <span>{{blog.comment_count}} {{format_plural "comment" blog.comment_count}}</span>
+      </div>
+      <span class="blog-content">{{blog.content}}</span>
+    </article>
+   
+ {{#if loggedIn}}
+ <h4 class="sub-heading">Add a Comment Below</h4>
+  <form class="comment-blog-form">
+  <div>
+    <textarea name="comment-blog-body"></textarea>
+  </div>
+
+  <div class="btn-div">
+    <button type="submit" class="btn-signup">add comment</button>
+    <button type="button" class="upvote-btn" id="upvote-blog-btn">upvote</button>
+  </div>
+</form>
+{{/if}}
+
+{{> commentblogs blog.commentblogs}}
+
+</div>
+{{#if loggedIn}}
+<script src="/javascript/commentblog.js"></script>
+<script src="/javascript/upvote-blog.js"></script>
+{{/if}}

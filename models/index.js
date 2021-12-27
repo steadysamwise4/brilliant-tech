@@ -33,6 +33,7 @@ User.hasMany(Blog, {
 
 Blog.belongsTo(User, {
     foreignKey: 'user_id',
+    onDelete: "CASCADE"
 }); 
 
 User.belongsToMany(Blog, {
@@ -92,19 +93,23 @@ Votelink.belongsTo(User, {
   });
 
   Commentblog.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: "CASCADE"
   });
   
   Commentblog.belongsTo(Blog, {
-    foreignKey: 'blog_id'
+    foreignKey: 'blog_id',
+    onDelete: "CASCADE"
   });
   
   User.hasMany(Commentblog, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: "SET NULL"
   });
   
   Blog.hasMany(Commentblog, {
-    foreignKey: 'blog_id'
+    foreignKey: 'blog_id',
+    onDelete: "SET NULL"
   });
 
 module.exports = { User, Link, Blog, Votelink, Voteblog, Commentlink, Commentblog };

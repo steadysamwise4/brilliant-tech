@@ -1,0 +1,12 @@
+<article class="post">
+      <div class="link-title">
+        <a href="/allblogs/blog/{{id}}">{{title}}</a>
+      </div>
+      <div class="meta">
+        {{vote_count}} {{format_plural "point" vote_count}} - posted by {{user.username}} on
+        {{format_date created_at}}
+        
+        </br>
+        <span>{{comment_count}} {{format_plural "comment" comment_count}}</span>
+      </div>
+    </article>

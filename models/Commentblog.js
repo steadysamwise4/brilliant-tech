@@ -29,7 +29,7 @@ Commentblog.init(
           type: DataTypes.INTEGER,
           allowNull: false,
           references: {
-            model: 'link',
+            model: 'blog',
             key: 'id'
           }
         }

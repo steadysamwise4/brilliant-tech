@@ -50,6 +50,15 @@ body {
   border-radius: 15px;
   margin: 20px;
 }
+.blog {
+  background-color: rgb(192, 192, 192, 0.8);
+  color: whitesmoke;
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 650px;
+  color: black;
+  text-align: center;
+}
 nav {
   background-color: rgb(192, 192, 192, 0.3);
   text-align: end;
@@ -296,4 +305,11 @@ textarea {
 }
 .btn-div {
   padding: 15px;
+}
+
+@media only screen and (max-width: 575px) {
+    a {
+        font-size: 0.8rem;
+    }
+
 }
