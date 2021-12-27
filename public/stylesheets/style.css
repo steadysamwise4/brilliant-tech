@@ -1,285 +1,299 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
-html, body {
-    background: url('/images/light-explosion.jpg') center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+html,
+body {
+  background: url("/images/light-explosion.jpg") center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 body {
-    font-family: sans-serif;
-    width:100%;
-    margin:0 auto;
+  font-family: sans-serif;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .wrapper {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 .page-title {
-   
-    text-align: center;
-    color:cornsilk;
-    font-size: 3.0rem;
+  text-align: center;
+  color: cornsilk;
+  font-size: 3rem;
 }
 
 .home {
-    
-    text-align: center;
-    color: cornsilk;
+  text-align: center;
+  color: cornsilk;
 }
 
 .footer {
-    flex-shrink: 0;
-    text-align: center;
-    color: cornsilk;
-    background-color:black;
-    position: sticky;
-    top: 100vh;
-    overflow: auto;
+  flex-shrink: 0;
+  text-align: center;
+  color: cornsilk;
+  background-color: black;
+  position: sticky;
+  top: 100vh;
+  overflow: auto;
 }
 
 .post {
-    background-color: rgb(192,192,192,0.8);
-    color:whitesmoke;
-    border-radius: 15px; 
-    margin: 20px; 
+  background-color: rgb(192, 192, 192, 0.8);
+  color: whitesmoke;
+  border-radius: 15px;
+  margin: 20px;
 }
 nav {
-    background-color: rgb(192,192,192,0.3);
-    text-align: end;
-    padding-top: 4px;
-    padding-bottom: 2px;
-    padding-right: 15px;
+  background-color: rgb(192, 192, 192, 0.3);
+  text-align: end;
+  padding-top: 4px;
+  padding-bottom: 2px;
+  padding-right: 15px;
 }
 .nav-mini {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: rgb(245,245,245,0.8);
-    margin: 25px 0;
-    padding: 5px;
-    
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: rgb(245, 245, 245, 0.8);
+  margin: 25px 0;
+  padding: 5px;
 }
 
 .post-list {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .meta {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 .link-heading {
-    font-size: 1.7rem;
-    text-align: center;
-    color: whitesmoke;
+  font-size: 1.7rem;
+  text-align: center;
+  color: whitesmoke;
 }
 
 .link-title {
-    font-size: 1.5rem;
-    font-weight: bolder;
-    color: #560485;
-    
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: #560485;
 }
 
 a {
-    text-decoration: none;
-    color: #560485;
-    font-weight: bold;
-    transition: color .1s;
-    flex: inherit;
+  text-decoration: none;
+  color: #560485;
+  font-weight: bold;
+  transition: color 0.1s;
+  flex: inherit;
 }
 .edit-link {
-    padding:5px 30px;
-    background-color: rgb(245,245,245,0.8);
-    border-radius: 5px;
-    border: black solid 1px;
+  padding: 5px 30px;
+  background-color: rgb(245, 245, 245, 0.8);
+  border-radius: 5px;
+  border: black solid 1px;
 }
 .sub-heading {
-    font-size: 1.5rem;
-    font-weight: bolder;
-    color: whitesmoke;
-    background-color: rgb(86,4,133,0.8);
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: whitesmoke;
+  background-color: rgb(86, 4, 133, 0.8);
+  text-align: center;
 }
-  
+
 a:hover {
-    color:salmon ;
+  color: salmon;
 }
 .author {
-      font-size: 0.8rem;
-      color:rgb(29, 37, 37);
+  font-size: 0.8rem;
+  color: rgb(29, 37, 37);
 }
 .description {
-      font-size: 1.0rem;
-      color:rgb(29, 37, 37);
+  font-size: 1rem;
+  color: rgb(29, 37, 37);
 }
 .btn-signup {
-    background: whitesmoke;
-    border: solid 1px gold;
-    border-radius: 10px;
-    padding: 3px;
-    cursor: pointer;
-    text-decoration: none;
-    color:darkblue;
-    font-size: 80%;
-    font-weight: bolder;
-    transition: color .1s;
-    margin-left: 16px;
-    margin-right: 16px;
+  background: whitesmoke;
+  border: solid 1px gold;
+  border-radius: 10px;
+  padding: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(86, 4, 133);
+  font-size: 80%;
+  font-weight: bolder;
+  transition: color 0.1s;
+  margin-left: 16px;
+  margin-right: 16px;
 }
-  
+
 .btn-signup:hover {
-    background: whitesmoke;
-    color: salmon;
+  background: whitesmoke;
+  color: salmon;
 }
 
 .btn-logout {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    text-decoration: none;
-    color: whitesmoke;
-    font-size: 100%;
-    font-weight: bold;
-    transition: color .1s;
-    margin-left: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 100%;
+  font-weight: bold;
+  transition: color 0.1s;
+  margin-left: 4px;
 }
-  
+
 .btn-logout:hover {
-    background: none;
-    color:salmon;
+  background: none;
+  color: salmon;
 }
 
 .login {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    text-decoration: none;
-    color: whitesmoke;
-    font-size: 100%;
-    font-weight: bold;
-    transition: color .1s;
-    margin-left: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 100%;
+  font-weight: bold;
+  transition: color 0.1s;
+  margin-left: 4px;
 }
-      
-.btn-logout:hover {
-    background: none;
-    color:salmon;
-}
+
 .form {
-    background-color: rgb(192,192,192,0.8);
-    margin: auto;
-    width: 350px;
-    font-size: 1.3rem;
-    border-radius: 10px;
+  background-color: rgb(192, 192, 192, 0.8);
+  margin: auto;
+  width: 350px;
+  font-size: 1.3rem;
+  border-radius: 10px;
 }
 .add-form {
-    background-color: rgb(192,192,192,0.8);
-    margin: auto;
-    max-width: 650px;
-    font-size: 1.0rem;
-    border-radius: 10px;
+  background-color: rgb(192, 192, 192, 0.8);
+  margin: auto;
+  max-width: 650px;
+  font-size: 1rem;
+  border-radius: 10px;
+  color:black;
 }
 
 input {
-    padding: .5%;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  padding: 0.5%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
-  
+
 input:focus {
-    outline: none;
-    border: 1px solid #3486eb;
+  outline: none;
+  border: 1px solid #3486eb;
 }
-  
+
 textarea {
-    min-width: 40%;
-    min-height: 100px;
+  min-width: 40%;
+  min-height: 100px;
 }
 .field {
-      text-align: center;
-      padding: 15px;
+  text-align: center;
+  padding: 15px;
 }
 .add-field {
-    text-align: center;
-    padding: 3px;
-    font-weight: bold;
+  text-align: center;
+  padding: 3px;
+  font-weight: bold;
 }
 .submit {
-    background: blue;
-    border: solid 1px black;
-    border-radius: 10px;
-    padding: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    color:whitesmoke;
-    font-size: 80%;
-    font-weight: bolder;
-    transition: color .1s;
-    margin-left: 16px;
-    margin-right: 16px;
-    font-size: 1.6rem;
+  background: rgb(86, 4, 133, 0.8);
+  border: solid 1px black;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 80%;
+  font-weight: bold;
+  transition: color 0.1s;
+  margin-left: 16px;
+  margin-right: 16px;
+  font-size: 1.2rem;
 }
-      
+.delete-link-btn {
+  background: red;
+  border: solid 1px black;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 80%;
+  font-weight: bold;
+  transition: color 0.1s;
+  margin-left: 16px;
+  margin-right: 16px;
+  font-size: 1.2rem;
+}
 .submit:hover {
-    color: salmon;
+  color: salmon;
+  background-color: whitesmoke;
+}
+.delete-link-btn:hover{
+    background-color:whitesmoke;
+    color:salmon;
 }
 .text {
-    color:black;
-    font-weight: bolder;
+  color: black;
+  font-weight: bolder;
 }
 
 .comment {
-    padding: 1%;
-    margin: 20px;
-    margin-bottom: 1%;
-    background-color: rgb(192,192,192,0.8);
-    border-radius: 15px;
-  }
-  
-  .comment:nth-child(odd) {
-    background-color: rgb(192,192,192,0.8);;
-  }
-  
-  .comment .meta {
-    font-size: 90%;
-    margin-bottom: .5%;
-    color:whitesmoke;
-  }
-  .comment-heading {
-    font-size: 1.2rem;
-    text-align: center;
-    color: whitesmoke;
+  padding: 1%;
+  margin: 20px;
+  margin-bottom: 1%;
+  background-color: rgb(192, 192, 192, 0.8);
+  border-radius: 15px;
+}
+
+.comment:nth-child(odd) {
+  background-color: rgb(192, 192, 192, 0.8);
+}
+
+.comment .meta {
+  font-size: 90%;
+  margin-bottom: 0.5%;
+  color: whitesmoke;
+}
+.comment-heading {
+  font-size: 1.2rem;
+  text-align: center;
+  color: whitesmoke;
 }
 .comment-body {
-    border-radius: 12px;
-    min-width: 40%;
-    min-height: 100px;
-    padding: .5%;
-    border: 1px solid #ccc;
+  border-radius: 12px;
+  min-width: 40%;
+  min-height: 100px;
+  padding: 0.5%;
+  border: 1px solid #ccc;
 }
 .comment-body:focus {
-    outline: none;
-    border: 1px solid black;
-  }
-  .upvote-btn {
-    background-color: #560485;
-    transition: background-color .1s;
-    color:whitesmoke;
-  }
-  
-  .upvote-btn:hover {
-    background-color:#905baf ;
-  }
-  .btn-div {
-      padding:15px;
-  }
+  outline: none;
+  border: 1px solid black;
+}
+.upvote-btn {
+  background-color: #560485;
+  transition: background-color 0.1s;
+  color: whitesmoke;
+}
+
+.upvote-btn:hover {
+  background-color: #905baf;
+}
+.btn-div {
+  padding: 15px;
+}

@@ -2,24 +2,23 @@
   <div class="nav-mini">
       <a href="/" class="center">Return Home</a>
   </div>
+  <h3 class="sub-heading">Post an Article</h3>
   <form id="add-link-form" class="add-form">
-
-  <h1 class="link-heading">Add an Article Link</h1>
    <div class="add-field">
     <label for="title-input-link">Title:</label><br>
-    <input type="text" style="width: 500px" id="title-input-link" />
+    <input type="text" style="width: 75%" id="title-input-link" />
   </div>
   <div class="add-field" > 
     <label for="author-input-link">Author:</label><br>
-    <input type="text" style="width: 500px" id="author-input-link" />
+    <input type="text" style="width: 75%" id="author-input-link" />
   </div>
   <div class="add-field">
     <label for="discription-input-link">Description(brief):</label><br>
-    <input type="text" style="width: 500px" id="description-input-link" />
+    <input type="text" style="width: 75%" id="description-input-link" />
   </div>
   <div class="add-field">
     <label for="url-input-link">url:</label><br>
-    <input type="text" style="width: 500px" id="url-input-link" />
+    <input type="text" style="width: 75%" id="url-input-link" />
   </div>
   <div class="field">
     <button class="submit" type="submit">Submit</button>
@@ -28,7 +27,7 @@
 
   {{#if links.length}} 
   <div class="home">
- <h3 class="sub-heading">Articles You have Linked</h3>
+ <h3 class="sub-heading">Articles You have Posted</h3>
     <ol class="post-list">
     {{#each links as |link|}}
   <li>

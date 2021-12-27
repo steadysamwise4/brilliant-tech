@@ -12,7 +12,8 @@ User.hasMany(Link, {
 
 Link.belongsTo(User, {
     foreignKey: 'user_id',
-});
+    onDelete: "CASCADE"
+}); 
 
 User.belongsToMany(Link, {
     through: Votelink,
@@ -71,19 +72,23 @@ Votelink.belongsTo(User, {
   });
 
   Commentlink.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: "CASCADE"
   });
   
   Commentlink.belongsTo(Link, {
-    foreignKey: 'link_id'
+    foreignKey: 'link_id',
+    onDelete: "CASCADE"
   });
   
   User.hasMany(Commentlink, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: "SET NULL"
   });
   
   Link.hasMany(Commentlink, {
-    foreignKey: 'link_id'
+    foreignKey: 'link_id',
+    onDelete: 'SET NULL'
   });
 
   Commentblog.belongsTo(User, {

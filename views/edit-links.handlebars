@@ -1,0 +1,51 @@
+<div class="home">
+<div class="nav-mini">
+    <a href="/dashboard"> &larr; Back to dashboard</a>
+      <a href="/" class="center">Return Home</a>
+  </div>
+<h3 class="sub-heading">Edit Your Article Link</h3>
+  <form id="edit-link-form" class="add-form">
+   <div class="add-field">
+    <label for="title-input-link">Title:</label><br>
+    <input name="link-title" id="title-input-link" type="text" style="width: 75%" value="{{link.title}}" />
+  </div>
+  <div class="add-field" > 
+    <label for="author-input-link">Author:</label><br>
+    <input name="link-author" id="author-input-link" type="text" style="width: 75%" value="{{link.author}}" />
+  </div>
+  <div class="add-field">
+    <label for="discription-input-link">Description(brief):</label><br>
+    <input name="link-description" id="discription-input-link" type="text" style="width: 75%" value="{{link.description}}" />
+  </div>
+  <div class="add-field">
+    <a href="{{link.link_url}}">{{format_url link.link_url}}</a>
+  </div>
+  <div class="meta">
+        {{link.vote_count}} {{format_plural "point" link.vote_count}} - posted by {{link.user.username}} on
+        {{format_date link.created_at}}
+        </br>
+        <span>{{link.commentlinks.length}} {{format_plural "comment" link.commentlinks.length}}</span>
+      </div>
+  <div class="field">
+    <button class="submit" type="submit">Save</button>
+    <button type="button" class="delete-link-btn" id="delete-link-btn">Delete</button>
+  </div>
+  </form>
+
+  <h4 class="sub-heading">Add a Comment Below</h4>
+  <form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div class="btn-div">
+    <button type="submit" class="btn-signup">add comment</button>
+  </div>
+</form>
+
+{{> commentlinks link.commentlinks}}
+</div>
+<script src="/javascript/commentlink.js"></script>
+<script src="/javascript/edit-link.js"></script>
+<script src="/javascript/delete-link.js"></script>
+

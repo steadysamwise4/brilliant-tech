@@ -1,6 +1,7 @@
 const sequelize = require('../../config/connection');
 const router = require('express').Router();
 const { Link, User, Votelink, Commentlink } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // get all links
 router.get('/', (req, res) => {
@@ -84,7 +85,7 @@ router.get('/', (req, res) => {
   });
 
   // create a posted link
-  router.post('/', (req, res) => {
+  router.post('/', withAuth, (req, res) => {
     // expects {title: 'The fundamentals of security incident response', 
     //description: 'Read about the ongoing battle between business and cybercriminals',
     // author: 'Chris Pratt', 
@@ -104,7 +105,7 @@ router.get('/', (req, res) => {
   });
 
   // PUT /api/links/upvote - upvote this link
-router.put('/upvote', (req, res) => {
+router.put('/upvote', withAuth,(req, res) => {
   if (req.session) {
     // custom static method created in models/Link.js
     Link.upvote({...req.body, user_id: req.session.user_id}, { Votelink, Commentlink, User })
@@ -145,7 +146,7 @@ router.put('/upvote', (req, res) => {
 });
 
 // delete a link
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   Link.destroy({
     where: {
       id: req.params.id

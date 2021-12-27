@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Link, Blog, Votelink, Voteblog, Commentlink, Commentblog } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -85,6 +86,7 @@ router.post('/', (req, res) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
+      req.session.email = dbUserData.email;
       req.session.loggedIn = true;
   
       res.json(dbUserData);
@@ -119,8 +121,9 @@ router.post('/login', (req, res) => {
       }
       req.session.save(() => {
         // declare session variables
-        req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
+        req.session.user_id = dbUserData.id;
+        req.session.email = dbUserData.email;
         req.session.loggedIn = true;
 
       res.json({ user: dbUserData, message: 'You are now logged in!' });
@@ -129,7 +132,7 @@ router.post('/login', (req, res) => {
 });
 
 // PUT /api/users/1 - update a user's information
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     // expects {username: 'aperson4', email: 'aperson4@gmail.com', password: 'password4321'}
     User.update(req.body, {
         individualHooks: true,
@@ -152,7 +155,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE /api/users/1 - delete a user
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     User.destroy({
         where: {
           id: req.params.id

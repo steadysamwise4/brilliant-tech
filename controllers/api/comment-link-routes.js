@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Commentlink, User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
     Commentlink.findAll({
@@ -23,7 +24,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     if (req.session) {
     Commentlink.create({
         comment_text: req.body.comment_text,
@@ -38,7 +39,7 @@ router.post('/', (req, res) => {
     }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Commentlink.destroy({
         where: {
             id: req.params.id 
