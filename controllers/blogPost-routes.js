@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
         const blogs = dbBlogData.map(blog => blog.get({ plain: true }));
         res.render('allblogs', { 
             blogs,
-            loggedIn: true
+            loggedIn: req.session.loggedIn
         });
       })
       .catch(err => {
