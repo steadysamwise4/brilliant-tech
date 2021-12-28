@@ -1,7 +1,9 @@
 <div class="nav-mini">
-      <a href="/" class="center">Your Blog Posts</a>
+      <a href="/" class="center">Linked Articles</a>
       <a href="/allblogs" class="center">Blog Posts</a>
-      <a href="/dashboard" class="center">Link Dashboard</a>
+       {{#if loggedIn}}
+      <a href="/dashboard">Dashboard(articles)</a>
+      {{/if}}
   </div>
   <h3 class="sub-heading">Create a New Blog Post</h3>
 
@@ -27,7 +29,7 @@
     {{#each blogs as |blog|}}
   <li>
     {{> blog-info blog }}
-    <a href="/blog-dashboard/edit/{{link.id}}" class="edit-link">Edit blog</a>
+    <a href="/blog-dashboard/edit/{{blog.id}}" class="edit-link">Edit blog</a>
   </li>
   {{/each}}
 </ol>

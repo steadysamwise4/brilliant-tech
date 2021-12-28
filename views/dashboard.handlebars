@@ -1,7 +1,10 @@
 
   <div class="nav-mini">
-      <a href="/" class="center">Linked Articles</a>
+       <a href="/" class="center">Linked Articles</a>
       <a href="/allblogs" class="center">Blog Posts</a>
+       {{#if loggedIn}}
+      <a href="/blog-dashboard">Dashboard(blogs)</a>
+      {{/if}}
   </div>
   <h3 class="sub-heading">Post an Article</h3>
   <form id="add-link-form" class="add-form">

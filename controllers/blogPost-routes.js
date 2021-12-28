@@ -3,11 +3,8 @@ const sequelize = require('../config/connection');
 const { Blog, User, Commentblog } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, (req, res) => {
+router.get('/', (req, res) => {
     Blog.findAll({
-        where: {
-            user_id: req.session.user_id
-        },
         attributes: ['id', 
                      'title', 
                      'content', 

@@ -1,5 +1,5 @@
 async function signupFormHandler(event) {
-    event.preventDefault();
+    // event.preventDefault();
 
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
@@ -17,7 +17,7 @@ async function signupFormHandler(event) {
     });
     if (response.ok) {
         console.log('success') 
-        document.location.href = '/dashboard';
+        document.location.replace('/dashboard')
         } else {
             alert(response.statusText);
         }

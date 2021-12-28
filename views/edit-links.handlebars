@@ -1,7 +1,11 @@
 <div class="home">
 <div class="nav-mini">
-    <a href="/dashboard"> &larr; Back to dashboard</a>
-      <a href="/" class="center">Return Home</a>
+    <a href="/" class="center">Linked Articles</a>
+      <a href="/allblogs" class="center">Blog Posts</a>
+       {{#if loggedIn}}
+      <a href="/dashboard">Dashboard(articles)</a>
+      <a href="/blog-dashboard">Dashboard(blogs)</a>
+      {{/if}}
   </div>
 <h3 class="sub-heading">Edit Your Article Link</h3>
   <form id="edit-link-form" class="add-form">

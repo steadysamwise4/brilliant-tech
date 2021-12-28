@@ -209,6 +209,9 @@ textarea {
   min-width: 40%;
   min-height: 100px;
 }
+#content-input-blog {
+    min-height: 100px;
+}
 .field {
   text-align: center;
   padding: 15px;

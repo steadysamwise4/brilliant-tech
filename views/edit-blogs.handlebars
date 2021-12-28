@@ -1,6 +1,50 @@
 <div class="home">
 <div class="nav-mini">
-    <a href="/dashboard"> &larr; Back to dashboard</a>
-      <a href="/" class="center">Return Home</a>
+     <a href="/" class="center">Linked Articles</a>
+      <a href="/allblogs" class="center">Blog Posts</a>
+       {{#if loggedIn}}
+      <a href="/dashboard">Dashboard(articles)</a>
+      <a href="/blog-dashboard">Dashboard(blogs)</a>
+      {{/if}}
   </div>
 <h3 class="sub-heading">Edit Your Blog Post</h3>
+  <form id="edit-blog-form" class="add-form">
+    <div class="add-field">
+    <label for="title-input-blog">Title:</label><br>
+    <input name="blog-title" id="title-input-blog" type="text" style="width: 75%" value="{{blog.title}}" />
+  </div>
+  <div class="add-field" > 
+    <label for="content-input-blog">Content</label><br>
+    <input name="content-input-blog" style="width: 75%" id="content-input-blog" value="{{blog.content}}" />
+  </div>
+  <div class="meta">
+        {{blog.vote_count}} {{format_plural "point" blog.vote_count}} - posted by {{blog.user.username}} on
+        {{format_date blog.created_at}}
+        
+        </br>
+        <span>{{blog.comment_count}} {{format_plural "comment" blog.comment_count}}</span>
+      </div>
+ <div class="field">
+    <button class="submit" type="submit">Save</button>
+    <button type="button" class="delete-link-btn" id="delete-blog-btn">Delete</button>
+  </div>
+  </form>
+
+  <h4 class="sub-heading">Add a Comment Below</h4>
+  <form class="comment-blog-form">
+  <div>
+    <textarea name="comment-blog-body"></textarea>
+  </div>
+
+  <div class="btn-div">
+    <button type="submit" class="btn-signup">add comment</button>
+  </div>
+</form>
+
+{{> commentlinks blog.commentblogs}}
+</div>
+<script src="/javascript/commentblog.js"></script>
+<script src="/javascript/edit-blog.js"></script>
+<script src="/javascript/delete-blog.js"></script>
+
+  
